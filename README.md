@@ -41,6 +41,41 @@
  * Definição: seção para código do usuário. 
  */
 
+class Token {
+  private int linha;
+  private int coluna;
+  private String lexema;
+  private String descricao;
+
+  public Token(int linha, int coluna, String lexema, String descricao) {
+    this.linha = linha;
+    this.coluna = coluna;
+    this.lexema = lexema;
+    this.descricao = descricao;
+  }
+  
+  public int getLinha() {return linha;}
+  public void setLinha(int linha) {this.linha = linha;}
+
+  public int getColuna() {return coluna;}
+  public void setColuna(int coluna) {this.coluna = coluna;}
+
+  public String getLexema() {return lexema;}
+  public void setLexema(String lexema) {this.lexema = lexema;}
+
+  public String getDescricao() {return descricao;}
+  public void setDescricao(String descricao) {this.descricao = descricao;}
+
+  public void imprimir() {
+    System.out.println("[" + linha + "]" + "[" + coluna + "] " + lexema + ": " + descricao + ".");
+  }
+
+  public void dispararExcecao() {
+    imprimir();
+    throw new RuntimeException(descricao + ": " + lexema + "");
+  }
+}
+
 %%
 
 /* 
@@ -54,16 +89,7 @@
 %class Scanner      // Troca o nome da classe Yylex para Scanner.
 
 %{
-
-  public void imprimir(int linha, int coluna, String lexema, String descricao) {
-    System.out.println("[" + linha + "]" + "[" + coluna + "] " + lexema + ": " + descricao + ".");
-  }
-
-  public void dispararExcecao(int linha, int coluna, String lexema, String descricao) {
-    imprimir(linha, coluna, lexema, descricao);
-    throw new RuntimeException(descricao + ": " + yytext() + "");
-  }
-
+  Token token;
 %}
 
 // Macros:
@@ -83,18 +109,18 @@ ID = [_|a-z|A-Z][a-z|A-Z|0-9|_]*
  * Regras e Ações Associadas: seção de instruções para
  * o analisador léxico. 
  */
-{ABREPARENTESE}  { imprimir(yyline, yycolumn, yytext(), "Abre parêntese"); }
-{FECHAPARENTESE} { imprimir(yyline, yycolumn, yytext(), "Fecha parêntese"); }
-{PONTOEVIRGULA}  { imprimir(yyline, yycolumn, yytext(), "Ponto e vírgula"); }
-{ATRIBUICAO}     { imprimir(yyline, yycolumn, yytext(), "Atribuição"); }
-{COMPARACAO}     { imprimir(yyline, yycolumn, yytext(), "Comparação"); }   
-"if"             { imprimir(yyline, yycolumn, yytext(), "Palavra reservada if"); }
-"then"           { imprimir(yyline, yycolumn, yytext(), "Palavra reservada then"); }
-{BRANCO}         { imprimir(yyline, yycolumn, yytext(), "Espaço em branco"); }
-{ID}             { imprimir(yyline, yycolumn, yytext(), "Identificador"); }
-{SOMA}           { imprimir(yyline, yycolumn, yytext(), "Operador de soma"); }
-{INTEIRO}        { imprimir(yyline, yycolumn, yytext(), "Número inteiro"); }
-.                { dispararExcecao(yyline, yycolumn, yytext(), "Caracter inválido"); }
+{ABREPARENTESE}  { token = new Token(yyline, yycolumn, yytext(), "Abre parêntese"); token.imprimir(); }
+{FECHAPARENTESE} { token = new Token(yyline, yycolumn, yytext(), "Fecha parêntese"); token.imprimir(); }
+{PONTOEVIRGULA}  { token = new Token(yyline, yycolumn, yytext(), "Ponto e vírgula"); token.imprimir(); }
+{ATRIBUICAO}     { token = new Token(yyline, yycolumn, yytext(), "Atribuição"); token.imprimir(); }
+{COMPARACAO}     { token = new Token(yyline, yycolumn, yytext(), "Comparação"); token.imprimir(); }   
+"if"             { token = new Token(yyline, yycolumn, yytext(), "Palavra reservada if"); token.imprimir(); }
+"then"           { token = new Token(yyline, yycolumn, yytext(), "Palavra reservada then"); token.imprimir(); }
+{BRANCO}         { token = new Token(yyline, yycolumn, yytext(), "Espaço em branco"); token.imprimir(); }
+{ID}             { token = new Token(yyline, yycolumn, yytext(), "Identificador"); token.imprimir(); }
+{SOMA}           { token = new Token(yyline, yycolumn, yytext(), "Operador de soma"); token.imprimir(); }
+{INTEIRO}        { token = new Token(yyline, yycolumn, yytext(), "Número inteiro"); token.imprimir(); }
+.                { token = new Token(yyline, yycolumn, yytext(), "Caracter inválido"); token.dispararExcecao(); }
 </pre>
 
 ## Arquivo: entrada01.txt:
