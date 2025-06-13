@@ -1,0 +1,73 @@
+[0][0] int: Palavra reservada int.
+[0][3]  : Espaço em branco.
+[0][4] main: Identificador.
+[0][8] (: Abre parêntese.
+[0][9] ): Fecha parêntese.
+[0][10]  : Espaço em branco.
+[0][11] {: Abre chave.
+[0][12] 
+: Espaço em branco.
+[1][0] int: Palavra reservada int.
+[1][3]  : Espaço em branco.
+[1][4] contador: Identificador.
+[1][12]  : Espaço em branco.
+[1][13] =: Atribuição.
+[1][14]  : Espaço em branco.
+[1][15] 1: Número inteiro.
+[1][16] ;: Ponto e vírgula.
+[1][17] 
+: Espaço em branco.
+[2][0] int: Palavra reservada int.
+[2][3]  : Espaço em branco.
+[2][4] soma: Identificador.
+[2][8]  : Espaço em branco.
+[2][9] =: Atribuição.
+[2][10]  : Espaço em branco.
+[2][11] 0: Número inteiro.
+[2][12] ;: Ponto e vírgula.
+[2][13] 
+: Espaço em branco.
+[3][0] while: Palavra reservada while.
+[3][5] (: Abre parêntese.
+[3][6] contador: Identificador.
+[3][14]  : Espaço em branco.
+[3][15] <=: Operador menor ou igual.
+[3][17]  : Espaço em branco.
+[3][18] 10: Número inteiro.
+[3][20] ): Fecha parêntese.
+[3][21]  : Espaço em branco.
+[3][22] {: Abre chave.
+[3][23] 
+: Espaço em branco.
+[4][0] soma: Identificador.
+[4][4]  : Espaço em branco.
+[4][5] +: Operador de soma.
+[4][6] =: Atribuição.
+[4][7]  : Espaço em branco.
+[4][8] contador: Identificador.
+[4][16] ;: Ponto e vírgula.
+[4][17] 
+: Espaço em branco.
+[5][0] contador: Identificador.
+[5][8] +: Operador de soma.
+[5][9] +: Operador de soma.
+[5][10] ;: Ponto e vírgula.
+[5][11] 
+: Espaço em branco.
+[6][0] }: Fecha chave.
+[6][1] 
+: Espaço em branco.
+[7][0] printf: Identificador.
+[7][6] (: Abre parêntese.
+[7][7] soma: Identificador.
+[7][11] ): Fecha parêntese.
+[7][12] ;: Ponto e vírgula.
+[7][13] 
+: Espaço em branco.
+[8][0] return: Palavra reservada return.
+[8][6]  : Espaço em branco.
+[8][7] 0: Número inteiro.
+[8][8] ;: Ponto e vírgula.
+[8][9] 
+: Espaço em branco.
+[9][0] }: Fecha chave.
